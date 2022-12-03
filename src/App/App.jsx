@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-
-
-
-
-export class App extends Component {
- 
-}
+export const App = () => {
+  return (
+    <div>
+      
+    </div>
+  );
+};
