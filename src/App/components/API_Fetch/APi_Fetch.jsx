@@ -1,5 +1,7 @@
-import axios from 'axios';
+// import axios from 'axios';
 
-export const APi_Fetch = () => {
-
+export const APIFetch = () => {
+    return (
+    <h2></h2>
+)
 };
