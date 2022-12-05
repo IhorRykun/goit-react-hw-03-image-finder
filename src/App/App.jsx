@@ -5,7 +5,7 @@ import { Button } from './components/form/button/Button';
 export class App extends React.Component {
   componentDidMount() {
     fetch(
-      'https://pixabay.com/api/?q=cat&page=1&key=your_key&image_type=photo&orientation=horizontal&per_page=12'
+      'https://pixabay.com/api/?q=cat&page=1&key=30187143-4d7f5699d03729238b163605a&image_type=photo&orientation=horizontal&per_page=12'
     )
       .then(r => r.json())
       .then(console.log);
