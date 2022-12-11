@@ -14,13 +14,21 @@ export class App extends React.Component {
   }
   render() {
     return (
-      <div className={css.container}>
-        <input className={css.input} type="text" placeholder="name" />
-        <Button>
-          <ImSearch />
-          Пошук
-        </Button>
-      </div>
-    );  
+      <header>
+        <form className={css.container}>
+          <input
+            className={css.input}
+            type="text"
+            autofocus
+            placeholder="Search images and photos"
+            autoComplete="off"
+          />
+          <Button>
+            <ImSearch />
+            Пошук
+          </Button>
+        </form>
+      </header>
+    );
   }
 }
