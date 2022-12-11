@@ -21,6 +21,6 @@ export class App extends React.Component {
           Пошук
         </Button>
       </div>
-    );
+    );  
   }
 }

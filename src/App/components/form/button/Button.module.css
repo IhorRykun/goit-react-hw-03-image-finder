@@ -4,4 +4,15 @@
   background-color: white;
   cursor: pointer;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.button:hover,
+.button:focus {
+  color: orange;
+  background-color: black;
+  outline: 2px solid orange;
 }
