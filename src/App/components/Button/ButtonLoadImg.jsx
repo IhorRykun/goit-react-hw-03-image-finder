@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { ButtonLoader } from './Button.styled';
+import { ButtonLoader } from './ButtonLoadImg.styled';
 
-export const Button = ({ onClick }) => {
+export const ButtonLoadImg = ({ onClick }) => {
   return (
     <>
       <ButtonLoader type="button" onClick={onClick}>
