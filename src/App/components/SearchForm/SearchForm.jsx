@@ -15,6 +15,8 @@ export class SearchForm extends React.Component {
     if (this.state.searchQuery.trim() === '') {
       window.alert('Веддіть текст пошуку');
     }
+    this.props.onSubmit(this.state.searchQuery);
+    this.reset();
   }
 
   reset() {
