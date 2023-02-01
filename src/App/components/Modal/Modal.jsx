@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ModalBackDrop, MidalContent } from './Modal.styled';
+import { ModalBackDrop } from './Modal.styled';
 
 export class Modal extends Component {
   render() {

@@ -7,6 +7,13 @@ import { Modal } from './components/Modal/Modal';
 export class App extends React.Component {
   state = {
     hits: '',
+    showModal: false,
+  };
+
+  togle = () => {
+    this.setState(state => ({
+      showModal: !state.showModal,
+    }));
   };
   componentDidMount() {
     fetch(
@@ -17,21 +24,9 @@ export class App extends React.Component {
       .then(hits => this.setState({ hits }));
   }
   render() {
-    const { hits } = this.state;
+    const { hits, showModal } = this.state;
     return (
       <header>
-        <Modal>
-          <img
-            src="https://img2.akspic.ru/previews/3/9/4/1/7/171493/171493-android-smartfon-fhd-purpur-zhidkiy-550x310.jpg"
-            alt="img.name"
-            style={{
-              top: `50%`,
-              left: `50%`,
-              position: 'fixed',
-              transform: 'translate(-50%, -50%)',
-            }}
-          />
-        </Modal>
         <form className={css.container}>
           <input
             className={css.input}
@@ -47,6 +42,26 @@ export class App extends React.Component {
         <ul>
           <li>{hits.collections}</li>
         </ul>
+        <button type="button" onClick={this.togle}>
+          відкрити модалку
+        </button>
+        {showModal && (
+          <Modal>
+            <img
+              src="https://img2.akspic.ru/previews/3/9/4/1/7/171493/171493-android-smartfon-fhd-purpur-zhidkiy-550x310.jpg"
+              alt="img.name"
+              style={{
+                top: `50%`,
+                left: `50%`,
+                position: 'fixed',
+                transform: 'translate(-50%, -50%)',
+              }}
+            />
+            <button type="button" onClick={this.togle}>
+              закрити модалку
+            </button>
+          </Modal>
+        )}
       </header>
     );
   }
