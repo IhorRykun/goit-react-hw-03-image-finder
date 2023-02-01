@@ -1,8 +1,5 @@
 import React from 'react';
-import css from '../App/App.module.css';
-import { Button } from './components/form/button/Button';
-import { ImSearch } from 'react-icons/im';
-import { Modal } from './components/Modal/Modal';
+
 
 export class App extends React.Component {
   state = {

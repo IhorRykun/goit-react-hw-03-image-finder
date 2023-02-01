@@ -1,8 +1,8 @@
 import { React } from 'react';
 import { MidalContent, ModalBackDrop } from './Modal.styled';
+import PropTypes from 'prop-types';
 
-
-export class Form extends React.Component {
+export class Modal extends React.Component {
   componentDidMount() {
     window.addEventListener('keydown', this.onKeyDown);
   }
@@ -32,3 +32,9 @@ export class Form extends React.Component {
     );
   }
 }
+
+Modal.prototypes = {
+  alt: PropTypes.string.isRequired,
+  largeImage: PropTypes.string.isRequired,
+  onModalClick: PropTypes.func.isRequired,
+};
