@@ -10,16 +10,16 @@ export class Modal extends Component {
     window.removeEventListener('keydown', this.onKeyDown);
   }
 
-  onKeyDown(e) {
+  onKeyDown = e => {
     if (e.code === 'Escape') {
       this.props.onModalClick();
     }
-  }
-  onBackDropClick(e) {
+  };
+  onBackDropClick = e => {
     if (e.target === e.currentTarget) {
       this.props.onModalClick();
     }
-  }
+  };
 
   render() {
     const { largeImage, alt } = this.props;

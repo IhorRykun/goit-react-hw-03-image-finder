@@ -46,33 +46,33 @@ export class App extends React.Component {
     }
   };
 
-  onSubmit(searchQuery) {
+  onSubmitForm = searchQuery => {
     this.setState({ searchQuery, images: [], page: 1 });
-  }
+  };
 
-  onLoadMore() {
+  onLoadMore = () => {
     this.setState(prevState => ({
       paga: prevState.paga + 1,
     }));
-  }
+  };
 
-  openModal(originalImageURL, tags) {
+  openModal = (originalImageURL, tags) => {
     this.toggleModal();
     this.setState({ originalImageURL, tags });
-  }
+  };
 
-  toggleModal() {
+  toggleModal = () => {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
     }));
-  }
+  };
 
   render() {
     const { images, originalImageURL, tags, showModal, totalHits } = this.state;
     const allImages = images.length === totalHits;
     return (
       <>
-        <SearchForm onSubmit={this.onSubmit} />
+        <SearchForm onSubmit={this.onSubmitForm} />
         <ImgGalleryList images={images} onOpenModal={this.openModal} />
         {images.length !== 0 && !allImages && (
           <ButtonLoadImg onClick={this.onLoadMore} />

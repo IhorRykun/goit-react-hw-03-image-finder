@@ -1,23 +1,23 @@
-import React from 'react';
-export class SearchForm extends React.Component {
+import { Component } from 'react';
+export class SearchForm extends Component {
   state = {
     searchQuery: '',
   };
 
-  handleChange(e) {
+  handleChange = e => {
     this.setState({
       searchQuery: e.target.value,
     });
-  }
+  };
 
-  handleSubmit(e) {
+  handleSubmit = e => {
     e.preventDefault();
     if (this.state.searchQuery.trim() === '') {
       window.alert('Веддіть текст пошуку');
     }
     this.props.onSubmit(this.state.searchQuery);
     this.reset();
-  }
+  };
 
   reset() {
     this.setState({
@@ -30,6 +30,7 @@ export class SearchForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
+          onChange={this.handleChange}
           type="text"
           value={searchQuery}
           autoComplete="off"
