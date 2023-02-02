@@ -1,8 +1,8 @@
-import { React } from 'react';
+import { React, Component } from 'react';
 import { MidalContent, ModalBackDrop } from './Modal.styled';
 import PropTypes from 'prop-types';
 
-export class Modal extends React.Component {
+export class Modal extends Component {
   componentDidMount() {
     window.addEventListener('keydown', this.onKeyDown);
   }

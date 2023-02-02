@@ -26,6 +26,7 @@ export class SearchForm extends React.Component {
   }
 
   render() {
+    const { searchQuery } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <input
