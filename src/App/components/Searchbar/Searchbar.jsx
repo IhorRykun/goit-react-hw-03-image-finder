@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import css from '../Searchbar/Searchbar.module.css';
+
 export class SearchForm extends Component {
   state = {
     searchQuery: '',
@@ -28,16 +30,20 @@ export class SearchForm extends Component {
   render() {
     const { searchQuery } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          value={searchQuery}
-          autoComplete="off"
-          placeholder="search images"
-        />
-        <button type="submit">Пошук</button>
-      </form>
+      <header>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            className={css.input}
+            onChange={this.handleChange}
+            type="text"
+            value={searchQuery}
+            autoComplete="off"
+            placeholder="Search images and photos"
+            autoFocus
+          />
+          <button type="submit">Пошук</button>
+        </form>
+      </header>
     );
   }
 }

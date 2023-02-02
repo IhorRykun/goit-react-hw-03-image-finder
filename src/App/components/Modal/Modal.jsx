@@ -14,7 +14,8 @@ export class Modal extends Component {
     if (e.code === 'Escape') {
       this.props.onModalClick();
     }
-  };
+ };
+ 
   onBackDropClick = e => {
     if (e.target === e.currentTarget) {
       this.props.onModalClick();

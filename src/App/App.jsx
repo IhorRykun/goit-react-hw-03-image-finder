@@ -1,11 +1,11 @@
-import React from 'react';
+import { Component } from 'react';
 import { ImgGalleryList } from './components/ImgGalleryList/ImgGalleryList';
-import { SearchForm } from './components/SearchForm/SearchForm';
+import { SearchForm } from './components/Searchbar/Searchbar';
 import { Modal } from './components/Modal/Modal';
-import { FetchImg, needValues } from './components/API_Fetch/APi_Fetch';
+import { FetchImg, needValues } from './API_Fetch/APi_Fetch';
 import { ButtonLoadImg } from './components/Button/ButtonLoadImg';
-
-export class App extends React.Component {
+import css from './App.module.css';
+export class App extends Component {
   state = {
     images: [],
     searchQuery: '',
@@ -32,9 +32,10 @@ export class App extends React.Component {
     try {
       const { hits, totalHits } = await FetchImg(searchQuery, page);
       if (totalHits === 0) {
-        window.alert('Вибачте, спробуйте ще раз');
+        console.log('object');
       }
       const newImages = needValues(hits);
+
       this.setState(({ images }) => ({
         images: [...images, ...newImages],
         totalHits,
@@ -52,7 +53,7 @@ export class App extends React.Component {
 
   onLoadMore = () => {
     this.setState(prevState => ({
-      paga: prevState.paga + 1,
+      paga: prevState.page + 1,
     }));
   };
 
@@ -71,21 +72,20 @@ export class App extends React.Component {
     const { images, originalImageURL, tags, showModal, totalHits } = this.state;
     const allImages = images.length === totalHits;
     return (
-      <>
+      <header className={css.container}>
         <SearchForm onSubmit={this.onSubmitForm} />
         <ImgGalleryList images={images} onOpenModal={this.openModal} />
         {images.length !== 0 && !allImages && (
           <ButtonLoadImg onClick={this.onLoadMore} />
         )}
-
         {showModal && (
           <Modal
-            onClick={this.toggleModal}
+            onModalClick={this.toggleModal}
             largeImage={originalImageURL}
             alt={tags}
           />
         )}
-      </>
+      </header>
     );
   }
 }
