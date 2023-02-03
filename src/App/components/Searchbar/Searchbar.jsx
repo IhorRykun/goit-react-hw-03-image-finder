@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import css from '../Searchbar/Searchbar.module.css';
 import { MdManageSearch } from 'react-icons/md';
+
 export class SearchForm extends Component {
   state = {
     searchQuery: '',
@@ -16,6 +17,7 @@ export class SearchForm extends Component {
     e.preventDefault();
     if (this.state.searchQuery.trim() === '') {
       window.alert('Веддіть текст пошуку');
+      return;
     }
     this.props.onSubmit(this.state.searchQuery);
     this.reset();
@@ -42,7 +44,10 @@ export class SearchForm extends Component {
             autoFocus
           />
           <button className={css.buttonSearch} type="submit">
-            <MdManageSearch style={{ width: '30px', height: '30px' }} />
+            <MdManageSearch
+              className={css.svg}
+              style={{ width: '30px', height: '30px' }}
+            />
           </button>
         </form>
       </header>
