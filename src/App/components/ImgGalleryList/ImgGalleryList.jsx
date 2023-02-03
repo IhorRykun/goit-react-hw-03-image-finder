@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { ImgGalleryItem } from '../ImgGalleryItem/ImgGalleryItem';
+import { ListImg } from './ImgGalleryList.styled';
 
 export const ImgGalleryList = ({ images, onOpenModal }) => (
-  <ul>
+  <ListImg>
     {images.map(({ id, webformatURL, largeImageURL, tags }) => (
       <ImgGalleryItem
         key={id}
@@ -12,7 +13,7 @@ export const ImgGalleryList = ({ images, onOpenModal }) => (
         openModal={onOpenModal}
       />
     ))}
-  </ul>
+  </ListImg>
 );
 
 ImgGalleryList.prototypes = {

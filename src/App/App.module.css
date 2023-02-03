@@ -1,5 +1,4 @@
 .container {
-  width: 100vw;
   background-color: #1e2939;
   margin-top: 20px;
   padding: 15px 0;
@@ -7,4 +6,13 @@
   display: flex;
   text-align: center;
   justify-content: center;
+}
+
+.container_main {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  border-radius: 15px;
 }

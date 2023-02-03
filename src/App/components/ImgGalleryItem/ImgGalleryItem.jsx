@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import { Img } from './ImgCalleryItem.sytled';
 
 export const ImgGalleryItem = ({ url, tag, openModal, largeImageURL }) => {
   return (
     <li>
-      <img
+      <Img
         src={url}
         alt={tag}
         onClick={() => {

@@ -72,20 +72,24 @@ export class App extends Component {
     const { images, originalImageURL, tags, showModal, totalHits } = this.state;
     const allImages = images.length === totalHits;
     return (
-      <header className={css.container}>
-        <SearchForm onSubmit={this.onSubmitForm} />
-        <ImgGalleryList images={images} onOpenModal={this.openModal} />
-        {images.length !== 0 && !allImages && (
-          <ButtonLoadImg onClick={this.onLoadMore} />
-        )}
-        {showModal && (
-          <Modal
-            onModalClick={this.toggleModal}
-            largeImage={originalImageURL}
-            alt={tags}
-          />
-        )}
-      </header>
+      <>
+        <header className={css.container}>
+          <SearchForm onSubmit={this.onSubmitForm} />
+        </header>
+        <main className={css.container_main}>
+          <ImgGalleryList images={images} onOpenModal={this.openModal} />
+          {images.length !== 0 && !allImages && (
+            <ButtonLoadImg onClick={this.onLoadMore} />
+          )}
+          {showModal && (
+            <Modal
+              onModalClick={this.toggleModal}
+              largeImage={originalImageURL}
+              alt={tags}
+            />
+          )}
+        </main>
+      </>
     );
   }
 }
