@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import css from '../Searchbar/Searchbar.module.css';
-
+import { MdManageSearch } from 'react-icons/md';
 export class SearchForm extends Component {
   state = {
     searchQuery: '',
@@ -8,7 +8,7 @@ export class SearchForm extends Component {
 
   handleChange = e => {
     this.setState({
-      searchQuery: e.target.value,
+      searchQuery: e.currentTarget.value,
     });
   };
 
@@ -31,7 +31,7 @@ export class SearchForm extends Component {
     const { searchQuery } = this.state;
     return (
       <header>
-        <form onSubmit={this.handleSubmit}>
+        <form className={css.formStyle} onSubmit={this.handleSubmit}>
           <input
             className={css.input}
             onChange={this.handleChange}
@@ -41,7 +41,9 @@ export class SearchForm extends Component {
             placeholder="Search images and photos"
             autoFocus
           />
-          <button type="submit">Пошук</button>
+          <button className={css.buttonSearch} type="submit">
+            <MdManageSearch style={{ width: '30px', height: '30px' }} />
+          </button>
         </form>
       </header>
     );

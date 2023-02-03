@@ -27,7 +27,7 @@ export class Modal extends Component {
     return (
       <ModalBackDrop onClick={this.onBackDropClick}>
         <MidalContent>
-          <img src={largeImage} style={{ width: '640px' }} alt={alt} />
+          <img src={largeImage} style={{ width: '1024px' }} alt={alt} />
         </MidalContent>
       </ModalBackDrop>
     );

@@ -5,6 +5,8 @@ import { Modal } from './components/Modal/Modal';
 import { fetchImg, needValues } from './API_Fetch/APi_Fetch';
 import { ButtonLoadImg } from './components/Button/ButtonLoadImg';
 import css from './App.module.css';
+import { Bars } from 'react-loader-spinner';
+
 export class App extends Component {
   state = {
     images: [],
@@ -81,6 +83,7 @@ export class App extends Component {
         <header className={css.container}>
           <SearchForm onSubmit={this.onSubmitForm} />
         </header>
+        {isLoading && <Bars />}
         <main className={css.container_main}>
           <ImgGalleryList images={images} onOpenModal={this.openModal} />
           {images.length !== 0 && !isLoading && !allImages && (
