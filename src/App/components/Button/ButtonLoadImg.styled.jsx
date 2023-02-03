@@ -1,10 +1,9 @@
-import styled from "@emotion/styled";
-
+import styled from '@emotion/styled';
 
 export const ButtonLoader = styled.button`
   padding: 8px 16px;
   border-radius: 2px;
-  background-color: #008080;
+  background-color: #1e2939;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   display: block;
@@ -12,7 +11,7 @@ export const ButtonLoader = styled.button`
   margin-left: auto;
   margin-bottom: 16px;
   color: #fff;
-  border: 0;
+  border-radius: 15px;
   text-decoration: none;
   cursor: pointer;
   font-family: inherit;
@@ -25,6 +24,8 @@ export const ButtonLoader = styled.button`
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   :hover,
   :focus {
-    background-color: #303f9f;
+    background-color: black;
+    color: orange;
+    border: 1px solid orange;
   }
 `;

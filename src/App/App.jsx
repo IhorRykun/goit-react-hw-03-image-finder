@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { ImgGalleryList } from './components/ImgGalleryList/ImgGalleryList';
 import { SearchForm } from './components/Searchbar/Searchbar';
 import { Modal } from './components/Modal/Modal';
-import { FetchImg, needValues } from './API_Fetch/APi_Fetch';
+import { fetchImg, needValues } from './API_Fetch/APi_Fetch';
 import { ButtonLoadImg } from './components/Button/ButtonLoadImg';
 import css from './App.module.css';
 export class App extends Component {
@@ -11,6 +11,7 @@ export class App extends Component {
     searchQuery: '',
     page: 1,
     error: null,
+    isLoading: false,
     showModal: false,
     originalImageURL: '',
     tags: '',
@@ -18,7 +19,7 @@ export class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const prevSearchQuery = prevState.searchQuery;
-    const nextSearchQuery = this.setState.searchQuery;
+    const nextSearchQuery = this.state.searchQuery;
     const prevPage = prevState.page;
     const page = this.state.page;
 
@@ -29,8 +30,9 @@ export class App extends Component {
 
   renderGalery = async () => {
     const { searchQuery, page } = this.state;
+    this.setState({ isLoading: true });
     try {
-      const { hits, totalHits } = await FetchImg(searchQuery, page);
+      const { hits, totalHits } = await fetchImg(searchQuery, page);
       if (totalHits === 0) {
         console.log('object');
       }
@@ -44,6 +46,8 @@ export class App extends Component {
       this.setState({
         error,
       });
+    } finally {
+      this.setState({ isLoading: false });
     }
   };
 
@@ -69,7 +73,8 @@ export class App extends Component {
   };
 
   render() {
-    const { images, originalImageURL, tags, showModal, totalHits } = this.state;
+    const { images, originalImageURL, tags, showModal, totalHits, isLoading } =
+      this.state;
     const allImages = images.length === totalHits;
     return (
       <>
@@ -78,7 +83,7 @@ export class App extends Component {
         </header>
         <main className={css.container_main}>
           <ImgGalleryList images={images} onOpenModal={this.openModal} />
-          {images.length !== 0 && !allImages && (
+          {images.length !== 0 && !isLoading && !allImages && (
             <ButtonLoadImg onClick={this.onLoadMore} />
           )}
           {showModal && (
