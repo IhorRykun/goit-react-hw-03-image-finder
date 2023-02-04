@@ -1,17 +1,17 @@
-import { Bars } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import { WraperLoader } from './Loader.styled';
 
 export const Loader = () => {
   <WraperLoader>
-    <Bars
+    <ThreeDots
       height="80"
       width="80"
-      color="#1e2939"
-      ariaLabel="bars-loading"
+      radius="9"
+      color="#4fa94d"
+      ariaLabel="three-dots-loading"
       wrapperStyle={{}}
-      wrapperClass=""
+      wrapperClassName=""
       visible={true}
     />
-    ;
   </WraperLoader>;
 };
