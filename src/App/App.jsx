@@ -6,6 +6,8 @@ import { fetchImg, needValues } from './API_Fetch/APi_Fetch';
 import { ButtonLoadImg } from './components/Button/ButtonLoadImg';
 import css from './App.module.css';
 import { Bars } from 'react-loader-spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class App extends Component {
   state = {
@@ -36,7 +38,9 @@ export class App extends Component {
     try {
       const { hits, totalHits } = await fetchImg(searchQuery, page);
       if (totalHits === 0) {
-        console.log('object');
+        toast.warn(
+          'Вибачте, пошук за вашим запитом не дав результатів. Спробуйте ще раз...'
+        );
       }
       const newImages = needValues(hits);
 
@@ -48,6 +52,7 @@ export class App extends Component {
       this.setState({
         error,
       });
+      toast.error('Упс, щось пішло не так, будь ласка спробуйте ще раз');
     } finally {
       this.setState({ isLoading: false });
     }
@@ -59,7 +64,7 @@ export class App extends Component {
 
   onLoadMore = () => {
     this.setState(prevState => ({
-      paga: prevState.page + 1,
+      page: prevState.page + 1,
     }));
   };
 
@@ -80,6 +85,7 @@ export class App extends Component {
     const allImages = images.length === totalHits;
     return (
       <>
+        <ToastContainer />
         <header className={css.container}>
           <SearchForm onSubmit={this.onSubmitForm} />
         </header>

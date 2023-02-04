@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import css from '../Searchbar/Searchbar.module.css';
 import { MdManageSearch } from 'react-icons/md';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class SearchForm extends Component {
   state = {
@@ -16,7 +18,7 @@ export class SearchForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.searchQuery.trim() === '') {
-      window.alert('Веддіть текст пошуку');
+      toast.warn('Веддіть текст пошуку');
       return;
     }
     this.props.onSubmit(this.state.searchQuery);
