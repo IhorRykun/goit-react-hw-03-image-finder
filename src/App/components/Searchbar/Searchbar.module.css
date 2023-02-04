@@ -14,13 +14,13 @@
 
 .input:hover,
 .input:focus {
-  outline: 2px solid orange;
   border: none;
+  border-bottom: 2px solid orange;
 }
 
 .buttonSearch {
   width: 50px;
-  height: 40px;
+  padding: 5px 0;
   background-color: #1e2939;
   color: white;
   margin-left: 5px;
@@ -31,6 +31,11 @@
 
 .buttonSearch:hover,
 .buttonSearch:focus {
-  border: 1px solid orange;
-  background-color: black;
+  outline: 2px solid orange;
+  border: 1px solid white;
+}
+
+.buttonSearch:hover .svg,
+.buttonSearch:focus .svg {
+  fill: orange;
 }
