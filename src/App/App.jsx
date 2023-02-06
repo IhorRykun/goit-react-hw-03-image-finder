@@ -5,9 +5,9 @@ import { Modal } from './components/Modal/Modal';
 import { fetchImg, needValues } from './API_Fetch/APi_Fetch';
 import { ButtonLoadImg } from './components/Button/ButtonLoadImg';
 import css from './App.module.css';
-import { Bars } from 'react-loader-spinner';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ThreeCircles } from 'react-loader-spinner';
 
 export class App extends Component {
   state = {
@@ -89,7 +89,9 @@ export class App extends Component {
         <header className={css.container}>
           <SearchForm onSubmit={this.onSubmitForm} />
         </header>
-        {isLoading && <Bars />}
+        <div className={css.spiner__container}>
+          {isLoading && <ThreeCircles color="#1e2939" />}
+        </div>
         <main className={css.container_main}>
           <ImgGalleryList images={images} onOpenModal={this.openModal} />
           {images.length !== 0 && !isLoading && !allImages && (
